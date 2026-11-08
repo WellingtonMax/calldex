@@ -8,13 +8,13 @@ const { Title } = Typography;
 
 const LoginPage = () => {
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const { handleLogin } = useAuth();
   const navigate = useNavigate();
 
   const onFinish = async (values) => {
     setLoading(true);
     try {
-      await login(values.username, values.password);
+      await handleLogin(values.username, values.password);
       navigate('/contacts');
     } catch (error) {
       message.error("Invalid username or password");
